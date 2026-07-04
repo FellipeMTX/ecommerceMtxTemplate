@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design system — "Gadgets" (Blocksy-inspired tech e-commerce)
+   Brand: violet #5B38ED · Ink #111518 · Surfaces F3F5F7 / FBFBFC · Font: Poppins
+   ========================================================================== */
+@theme {
+    --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+    /* Brand */
+    --color-brand: #5B38ED;
+    --color-brand-dark: #4928CF;
+    --color-brand-tint: #EFEBFD;
+
+    /* Neutrals */
+    --color-ink: #111518;       /* headings */
+    --color-muted: #4D5D6D;     /* body text */
+    --color-line: #E7EBEE;      /* borders */
+    --color-surface: #F3F5F7;   /* light section bg */
+    --color-surface-2: #FBFBFC; /* card bg */
+
+    /* Accents (used sparingly in tiles / badges) */
+    --color-accent-pink: #F00069;
+    --color-accent-gold: #FFC750;
+    --color-accent-teal: #09917F;
+}
+
+@layer base {
+    button {
+        cursor: pointer;
+    }
+    body {
+        color: var(--color-muted);
+        background: #ffffff;
+    }
+}
+
+@layer components {
+    @keyframes marqueeScroll {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+}
+
+/* Soft product/card shadows lifted from the reference theme */
+.shadow-soft {
+    box-shadow: 0px 30px 80px -30px rgba(193, 199, 212, 0.4);
+}
+.shadow-soft-sm {
+    box-shadow: 0px 12px 30px -14px rgba(93, 84, 140, 0.25);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
