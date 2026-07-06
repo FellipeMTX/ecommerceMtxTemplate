@@ -1,6 +1,6 @@
 'use client'
 import BestSelling from "@/components/BestSelling";
-import HeroBanner from "@/components/HeroBanner";
+import Hero3DBanner from "@/components/Hero3DBanner";
 import CategoriesMarquee from "@/components/CategoriesMarquee";
 import Newsletter from "@/components/Newsletter";
 import OurSpecs from "@/components/OurSpec";
@@ -10,7 +10,7 @@ import CategoryTiles from "@/components/CategoryTiles";
 export default function Home() {
     return (
         <div>
-            <HeroBanner />
+            <Hero3DBanner modelUrl="/models/iphone.glb" title="iPhone 17 Pro" />
             <CategoriesMarquee />
             <CategoryTiles />
             <LatestProducts />

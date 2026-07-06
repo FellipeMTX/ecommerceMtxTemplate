@@ -1,33 +1,19 @@
 'use client'
-import { useEffect, useState } from "react"
 import { toast } from "react-hot-toast"
 import Image from "next/image"
-import Loading from "@/components/Loading"
-import { productDummyData } from "@/assets/assets"
+import { useSelector } from "react-redux"
 
 export default function StoreManageProducts() {
 
     const currency = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || '$'
 
-    const [loading, setLoading] = useState(true)
-    const [products, setProducts] = useState([])
-
-    const fetchProducts = async () => {
-        setProducts(productDummyData)
-        setLoading(false)
-    }
+    const products = useSelector(state => state.product.list)
 
     const toggleStock = async (productId) => {
         // Logic to toggle the stock of a product
 
 
     }
-
-    useEffect(() => {
-            fetchProducts()
-    }, [])
-
-    if (loading) return <Loading />
 
     return (
         <>
@@ -39,6 +25,7 @@ export default function StoreManageProducts() {
                         <th className="px-4 py-3 hidden md:table-cell">Description</th>
                         <th className="px-4 py-3 hidden md:table-cell">MRP</th>
                         <th className="px-4 py-3">Price</th>
+                        <th className="px-4 py-3 hidden lg:table-cell">Variações</th>
                         <th className="px-4 py-3">Actions</th>
                     </tr>
                 </thead>
@@ -54,6 +41,9 @@ export default function StoreManageProducts() {
                             <td className="px-4 py-3 max-w-md text-slate-600 hidden md:table-cell truncate">{product.description}</td>
                             <td className="px-4 py-3 hidden md:table-cell">{currency} {product.mrp.toLocaleString()}</td>
                             <td className="px-4 py-3">{currency} {product.price.toLocaleString()}</td>
+                            <td className="px-4 py-3 hidden lg:table-cell text-slate-500 text-xs max-w-[180px] truncate">
+                                {product.variations?.length ? product.variations.map(v => v.name).join(', ') : '—'}
+                            </td>
                             <td className="px-4 py-3 text-center">
                                 <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">
                                     <input type="checkbox" className="sr-only peer" onChange={() => toast.promise(toggleStock(product.id), { loading: "Updating data..." })} checked={product.inStock} />

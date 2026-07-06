@@ -21,7 +21,7 @@ const Hero = () => {
                             <ChevronRightIcon className='group-hover:ml-2 transition-all' size={16} />
                         </div>
                         <h1 className='text-3xl sm:text-5xl leading-[1.15] my-4 font-bold text-white max-w-xs sm:max-w-md'>
-                            Smart gadgets. <br /> Prices you&apos;ll trust.
+                            The best of Apple. <br /> Prices you&apos;ll trust.
                         </h1>
                         <p className='text-white/70 text-sm max-w-sm'>The latest phones, audio and wearables — curated and shipped fast.</p>
                         <div className='text-white text-sm font-medium mt-6'>

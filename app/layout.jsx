@@ -10,14 +10,17 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-    title: "Gadgets. - Smart tech, trusted prices",
-    description: "Gadgets. - The latest and smartest gadgets, all in one place.",
+    title: "z-pack. - Smart tech, trusted prices",
+    description: "z-pack. - The latest Apple products, all in one place.",
 };
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={`${poppins.variable} font-sans antialiased text-muted`}>
+                <noscript>
+                    <style>{`.reveal{opacity:1 !important;transform:none !important;}`}</style>
+                </noscript>
                 <StoreProvider>
                     <Toaster />
                     {children}

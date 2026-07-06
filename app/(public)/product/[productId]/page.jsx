@@ -33,7 +33,7 @@ export default function Product() {
                 </div>
 
                 {/* Product Details */}
-                {product && (<ProductDetails product={product} />)}
+                {product && (<ProductDetails key={product.id} product={product} />)}
 
                 {/* Description & Reviews */}
                 {product && (<ProductDescription product={product} />)}

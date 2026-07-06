@@ -14,10 +14,10 @@ const Footer = () => {
         {
             title: "PRODUCTS",
             links: [
-                { text: "Earphones", path: '/', icon: null },
-                { text: "Headphones", path: '/', icon: null },
-                { text: "Smartphones", path: '/', icon: null },
-                { text: "Laptops", path: '/', icon: null },
+                { text: "iPhone", path: '/shop', icon: null },
+                { text: "Mac", path: '/shop', icon: null },
+                { text: "Apple Watch", path: '/shop', icon: null },
+                { text: "AirPods", path: '/shop', icon: null },
             ]
         },
         {
@@ -52,9 +52,9 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-12 border-b border-line text-muted">
                     <div>
                         <Link href="/" className="text-3xl font-bold text-ink tracking-tight">
-                            gadgets<span className="text-brand text-4xl leading-0">.</span>
+                            z-pack<span className="text-brand text-4xl leading-0">.</span>
                         </Link>
-                        <p className="max-w-[410px] mt-6 text-sm">Welcome to gadgets, your destination for the latest and smartest tech. From smartphones and wearables to essential accessories, we bring you the best in innovation — all in one place.</p>
+                        <p className="max-w-[410px] mt-6 text-sm">Welcome to z-pack, your destination for the latest Apple products. From iPhone and Mac to Apple Watch, AirPods and essential accessories, we bring you the best of Apple — all in one place.</p>
                         <div className="flex items-center gap-3 mt-5">
                             {socialIcons.map((item, i) => (
                                 <Link href={item.link} key={i} className="flex items-center justify-center w-10 h-10 bg-surface hover:bg-brand-tint hover:scale-105 border border-line transition rounded-full">
@@ -80,7 +80,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <p className="py-5 text-sm text-muted">
-                    Copyright 2025 © gadgets. All rights reserved.
+                    Copyright 2026 © z-pack. All rights reserved.
                 </p>
             </div>
         </footer>

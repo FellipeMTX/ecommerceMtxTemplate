@@ -1,8 +1,8 @@
 import StoreLayout from "@/components/store/StoreLayout";
 
 export const metadata = {
-    title: "Gadgets. - Store Dashboard",
-    description: "Gadgets. - Store Dashboard",
+    title: "z-pack. - Store Dashboard",
+    description: "z-pack. - Store Dashboard",
 };
 
 export default function RootAdminLayout({ children }) {

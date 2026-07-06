@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   Design system — "Gadgets" (Blocksy-inspired tech e-commerce)
+   Design system — "z-pack" (Blocksy-inspired tech e-commerce)
    Brand: violet #5B38ED · Ink #111518 · Surfaces F3F5F7 / FBFBFC · Font: Poppins
    ========================================================================== */
 @theme {
@@ -43,6 +43,23 @@
         100% {
             transform: translateX(-50%);
         }
+    }
+
+    /* Hero3DBanner — animated 3D product banner */
+    @keyframes glowPulse {
+        0%, 100% { opacity: .45; transform: translate(0, -50%) scale(1); }
+        50%      { opacity: .72; transform: translate(0, -50%) scale(1.08); }
+    }
+    @keyframes ringspin {
+        to { transform: rotate(360deg); }
+    }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: none; }
+    }
+    @keyframes hintPulse {
+        0%, 100% { opacity: .5; }
+        50%      { opacity: 1; }
     }
 }
 

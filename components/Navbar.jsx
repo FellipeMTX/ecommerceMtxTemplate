@@ -23,7 +23,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between max-w-7xl mx-auto py-4 transition-all">
 
                     <Link href="/" className="relative text-3xl font-bold text-ink tracking-tight">
-                        gadgets<span className="text-brand text-4xl leading-0">.</span>
+                        z-pack<span className="text-brand text-4xl leading-0">.</span>
                     </Link>
 
                     {/* Desktop Menu */}
@@ -36,7 +36,7 @@ const Navbar = () => {
 
                         <form onSubmit={handleSearch} className="hidden xl:flex items-center w-xs text-sm gap-2 bg-surface px-4 py-2.5 rounded-full border border-line focus-within:border-brand/40 transition">
                             <Search size={18} className="text-muted" />
-                            <input className="w-full bg-transparent outline-none placeholder-muted/70" type="text" placeholder="Search gadgets" value={search} onChange={(e) => setSearch(e.target.value)} required />
+                            <input className="w-full bg-transparent outline-none placeholder-muted/70" type="text" placeholder="Search products" value={search} onChange={(e) => setSearch(e.target.value)} required />
                         </form>
 
                         <Link href="/cart" className="relative flex items-center gap-2 text-muted hover:text-brand transition">

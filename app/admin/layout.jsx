@@ -1,8 +1,8 @@
 import AdminLayout from "@/components/admin/AdminLayout";
 
 export const metadata = {
-    title: "Gadgets. - Admin",
-    description: "Gadgets. - Admin",
+    title: "z-pack. - Admin",
+    description: "z-pack. - Admin",
 };
 
 export default function RootAdminLayout({ children }) {

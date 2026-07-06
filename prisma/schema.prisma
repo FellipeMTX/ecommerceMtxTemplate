@@ -34,14 +34,45 @@ model Product {
     images      String[]
     category    String
     inStock     Boolean  @default(true)
+    // A product may have zero variations (a simple product) or one+ variation groups.
+    hasVariations Boolean @default(false)
     storeId     String
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
 
     // Relations
-    store      Store       @relation(fields: [storeId], references: [id], onDelete: Cascade)
+    store      Store              @relation(fields: [storeId], references: [id], onDelete: Cascade)
     orderItems OrderItem[]
     rating     Rating[]
+    variations ProductVariation[]
+}
+
+// A variation group / attribute of a product, e.g. "Memória", "Cor", "Tamanho da tela".
+model ProductVariation {
+    id        String @id @default(cuid())
+    name      String
+    position  Int    @default(0)
+    productId String
+
+    product Product                  @relation(fields: [productId], references: [id], onDelete: Cascade)
+    options ProductVariationOption[]
+
+    @@index([productId])
+}
+
+// A selectable option inside a variation group, e.g. "512GB".
+// priceDelta is OPTIONAL: 0 = the option does not change the price; any other
+// value is added to the product's base price when the option is selected.
+model ProductVariationOption {
+    id          String @id @default(cuid())
+    label       String
+    priceDelta  Float  @default(0)
+    position    Int    @default(0)
+    variationId String
+
+    variation ProductVariation @relation(fields: [variationId], references: [id], onDelete: Cascade)
+
+    @@index([variationId])
 }
 
 enum OrderStatus {
@@ -79,17 +110,23 @@ model Order {
 }
 
 // Required for creating an OrderItem: orderId, productId, quantity, price
+// `variant` records the selected combination so two variations of the same
+// product can be separate line items in one order (hence an own `id` PK
+// instead of the old composite [orderId, productId]).
 model OrderItem {
+    id        String @id @default(cuid())
     orderId   String
     productId String
     quantity  Int
     price     Float
+    variant   Json? // e.g. { "Memória": "512GB", "Cor": "Titânio Azul" }
 
     // Relations
     order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
     product Product @relation(fields: [productId], references: [id])
 
-    @@id([orderId, productId])
+    @@index([orderId])
+    @@index([productId])
 }
 
 // Required for creating a Rating: rating, review, userId, productId

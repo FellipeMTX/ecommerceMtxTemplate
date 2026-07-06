@@ -2,6 +2,7 @@
 import { StarIcon, ShoppingCart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
@@ -11,12 +12,23 @@ const ProductCard = ({ product }) => {
 
     const currency = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || '$'
     const dispatch = useDispatch()
+    const router = useRouter()
 
-    // calculate the average rating of the product
-    const rating = Math.round(product.rating.reduce((acc, curr) => acc + curr.rating, 0) / product.rating.length);
+    const hasVariations = Array.isArray(product.variations) && product.variations.length > 0
+
+    // calculate the average rating of the product (0 when there are no reviews yet)
+    const rating = product.rating.length
+        ? Math.round(product.rating.reduce((acc, curr) => acc + curr.rating, 0) / product.rating.length)
+        : 0;
 
     const handleAdd = (e) => {
         e.preventDefault()
+        // A product with variations needs a combination chosen first — send the
+        // shopper to the product page instead of adding an ambiguous item.
+        if (hasVariations) {
+            router.push(`/product/${product.id}`)
+            return
+        }
         dispatch(addToCart({ productId: product.id }))
         toast.success('Added to cart')
     }
